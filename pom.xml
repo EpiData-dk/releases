@@ -10,4 +10,55 @@
         <version>1.0.3</version>
     </parent>
 
+    <groupId>dk.epidata.release</groupId>
+    <artifactId>epidata-analysis</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.8</version>
+                <executions>
+                    <execution>
+                        <id>unpack-dependencies</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>unpack-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <classifier>binary</classifier>
+                            <type>tar.gz</type>
+                            <includes>*</includes>
+                            <outputDirectory>${project.build.directory}/</outputDirectory>
+                            <stripVersion>true</stripVersion>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>dk.epidata.analysis</groupId>
+            <artifactId>epidata-analysis</artifactId>
+            <version>[3.0,4.0)</version>
+            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>dk.epidata.entryclient</groupId>
+            <artifactId>epidata-entryclient</artifactId>
+            <version>[4.0,5.0)</version>
+            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>dk.epidata.manager</groupId>
+            <artifactId>epidata-manager</artifactId>
+            <version>[4.0,5.0)</version>
+            <type>pom</type>
+        </dependency>
+    </dependencies>
 </project>

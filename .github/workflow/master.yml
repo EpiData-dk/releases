@@ -9,6 +9,8 @@ jobs:
   setup:
     name: Compile Code
     runs-on: ubuntu-latest
+    container:
+      image: epidata/fpcbuild:3.2.0-13
 
     steps:
       - name: Checkout code
@@ -38,3 +40,7 @@ jobs:
                 }                
               }
             ]'
+
+      - name: Pull dependencies
+        run:  mvn validate
+
