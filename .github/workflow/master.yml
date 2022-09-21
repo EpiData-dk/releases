@@ -1,0 +1,40 @@
+name: Build Analysis Artifact
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  setup:
+    name: Compile Code
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Generate Maven settings.xml
+        uses: whelk-io/maven-settings-xml-action@v20
+        with:
+          output_file: "/etc/maven/settings.xml"
+          servers:
+            '[{
+            "id": "github",
+            "username": "${{ secrets.CI_USER }}",
+            "password": "${{ secrets.CI_PASSWORD }}"
+            }]'
+          repositories:
+            '[
+              {
+                "id": "central",
+                "url": "https://repo1.maven.org/maven2"
+              },
+              {
+                "id": "github",
+                "url": "https://maven.pkg.github.com/epidata-dk/parent/",
+                "snapshots": {
+                  "enabled": "true"
+                }                
+              }
+            ]'
