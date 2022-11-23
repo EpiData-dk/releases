@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=EpiData Analysis
+Comment=EpiData Statistical Analysis Tool
+Exec=epidataanalysis
+Terminal=false
+Type=Application
+Icon=epidataanalysis.png
+Categories=Office;Database;ProjectManagement;GTK

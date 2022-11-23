@@ -1,0 +1,19 @@
+#!/bin/bash
+
+function removemenu() {
+  xdg-desktop-menu uninstall --mode system epidata-epidata.directory epidata-{{ COMPONENT }}.desktop
+}
+
+case $1 in
+  remove) ;;
+  upgade)
+    removemenu;;
+  remove)
+    removemenu;;
+  deconfigure) ;;
+  failed-upgrade) ;;
+  *) ;;
+esac
+
+
+

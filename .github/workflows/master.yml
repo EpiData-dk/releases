@@ -1,16 +1,19 @@
 name: Build Analysis Artifact
 
 on:
+  pull_request:
+    branches:
+      - master
   push:
     branches:
       - master
 
 jobs:
   setup:
-    name: Compile Code
+    name: Building Linux Installers
     runs-on: ubuntu-latest
     container:
-      image: epidata/fpcbuild:3.2.0-13
+      image: epidata/fpcbuild:3.2.0-15
 
     steps:
       - name: Checkout code
@@ -41,6 +44,12 @@ jobs:
               }
             ]'
 
+      - name: Resolve versions
+        run: mvn versions:resolve-ranges
+
       - name: Pull dependencies
-        run:  mvn validate
+        run: mvn validate -U
+
+      - name: Build All
+        run: ./build_all.sh
 

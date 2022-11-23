@@ -1,0 +1,4 @@
+SHORT: EpiData EntryClient
+DESCRIPTION: |
+  EpiData EntryClient is a tool for entering data into a database
+    created with EpiData Manager. Data entry is focus on data quality
