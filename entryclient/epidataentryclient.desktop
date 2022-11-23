@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=EpiData Entry Client
+Comment=EpiData Entry Client
+Exec=epidataentryclient
+Terminal=false
+Type=Application
+Icon=epidataentryclient.png
+Categories=Office;Database;GTK
