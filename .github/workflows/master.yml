@@ -51,5 +51,5 @@ jobs:
         run: mvn validate -U
 
       - name: Build All
-        run: build_all.sh
+        run: ./build_all.sh
 
