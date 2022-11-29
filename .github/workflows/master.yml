@@ -53,3 +53,14 @@ jobs:
       - name: Build All
         run: ./build_all.sh
 
+      # - name: SFTP Deploy
+      #   uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+      #   with:
+      #       username: ${{ secrets.SFTP_USER }}
+      #       password: ${{ secrets.SFTP_PASSWORD }} 
+      #       server: ${{ secrets.SFTP_SERVER }}
+      #       local_path: 'target/output/*'
+      #       remote_path: '${{ secrets.SFTP_REMOTE_PATH }}'
+      #       sftp_only: true
+
+
