@@ -1,16 +1,17 @@
 #!/bin/bash
 
-projectdir="$1"
+project_dir="$1"
 component="$2"
 version="$3"
 
-component_dir="${projectdir}/${component}"
+component_dir="${project_dir}/${component}"
 basedir="$(dirname ${0})"
-build_dir="${projectdir}/target/build"
+build_dir="${project_dir}/target/build"
+output_dir="${project_dir}/target/output"
 
 epidata_component="epidata${component}"
 
-# echo "projectdir: ${projectdir}"
+# echo "project_dir: ${project_dir}"
 # echo "version: ${version}"
 # echo "component: ${component}"
 # echo "component_dir: ${component_dir}"
@@ -24,16 +25,16 @@ cp -r "${basedir}/deb/" "${build_dir}/"
 
 # copy binary
 mkdir -p "${build_dir}/deb/usr/bin/"
-cp "${projectdir}/target/${component}/binaries/x86_64-linux/"* "${build_dir}/deb/usr/bin/"
+cp "${project_dir}/target/${component}/binaries/x86_64-linux/"* "${build_dir}/deb/usr/bin/"
 
 # copy documentation
 mkdir -p "${build_dir}/deb/usr/share/doc/${epidata_component}/"
-cp "${projectdir}/target/${component}/docs/"* "${build_dir}/deb/usr/share/doc/${epidata_component}/"
-cp "${projectdir}/target/docs/"* "${build_dir}/deb/usr/share/doc/${epidata_component}/"
+cp "${project_dir}/target/${component}/docs/"* "${build_dir}/deb/usr/share/doc/${epidata_component}/"
+cp "${project_dir}/target/docs/"* "${build_dir}/deb/usr/share/doc/${epidata_component}/"
 
 # copy samples
 mkdir -p "${build_dir}/deb/usr/share/${epidata_component}/"
-cp "${projectdir}/target/samples/"* "${build_dir}/deb/usr/share/${epidata_component}/"
+cp "${project_dir}/target/samples/"* "${build_dir}/deb/usr/share/${epidata_component}/"
 
 # copy desktop file
 mkdir -p "${build_dir}/deb/usr/share/applications/"
@@ -62,7 +63,7 @@ pushd "${build_dir}/" > /dev/null
 fakeroot dpkg-deb -b "./deb" "${epidata_component}.${version}-0_amd64.deb" > /dev/null
 popd > /dev/null
 
-mv "${build_dir}/${epidata_component}.${version}-0_amd64.deb" "${projectdir}/target/"
+mv "${build_dir}/${epidata_component}.${version}-0_amd64.deb" "${output_dir}/"
 
 # clean up
 rm -fr "${build_dir}"

@@ -5,6 +5,9 @@ component=$2
 version=$3
 basedir="$(dirname ${0})"
 
+# Prepare output dir
+mkdir -p "${project_dir}/target/output/"
+
 echo " - building debian installer"
 ${basedir}/build_deb.sh "${project_dir}" "${component}" "${version}"
 
