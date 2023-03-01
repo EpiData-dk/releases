@@ -8,8 +8,8 @@ basedir="$(dirname ${0})"
 # Prepare output dir
 mkdir -p "${project_dir}/target/output/"
 
-echo " - building debian installer"
+echo " - building debian installer (linux)"
 ${basedir}/build_deb.sh "${project_dir}" "${component}" "${version}"
 
-echo " - building zip structures"
+echo " - building zip structures (linux)"
 ${basedir}/build_zip.sh "${project_dir}" "${component}" "${version}"
