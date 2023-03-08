@@ -5,8 +5,7 @@ component="$2"
 version="$3"
 
 component_dir="${project_dir}/${component}"
-basedir="$(dirname ${0})"
-build_dir="${project_dir}/target/build"
+build_dir="$(mktemp -d)"
 output_dir="${project_dir}/target/output"
 
 epidata_component="epidata${component}"

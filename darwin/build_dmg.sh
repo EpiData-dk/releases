@@ -7,19 +7,10 @@ version="$3"
 
 component_dir="${project_dir}/${component}"
 basedir="$(dirname ${0})"
-build_dir="${project_dir}/target/build"
+build_dir=$(mktemp -d)
 output_dir="${project_dir}/target/output"
 
 epidata_component="epidata${component}"
-
-# echo "project_dir: ${project_dir}"
-# echo "version: ${version}"
-# echo "component: ${component}"
-# echo "component_name: ${component_name}"
-# echo "component_dir: ${component_dir}"
-# echo "basedir: ${basedir}"
-# echo "build_dir: ${build_dir}"
-# echo "epidata_component: ${epidata_component}"
 
 # copy structure
 mkdir -p "${build_dir}"

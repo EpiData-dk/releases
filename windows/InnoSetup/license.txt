@@ -1,0 +1,11 @@
+The EpiData Association, Odense, Denmark has copyrights on EpiData.
+
+There can be no payment for the software.
+Contact info@epidata.dk immediately if you had to pay for EpiData.
+All translations are also free.
+
+You may download and use EpiData software without any payment as an individual.
+For institutions see statements on http://www.epidata.dk/license.htm
+
+E-Mail:  info@epidata.dk
+Website: http://www.epidata.dk
