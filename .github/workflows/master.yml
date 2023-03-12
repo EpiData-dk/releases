@@ -13,14 +13,14 @@ jobs:
     name: Building Linux Installers
     runs-on: ubuntu-latest
     container:
-      image: epidata/release-builder:latest
+      image: epidata/release-builder:0.2
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Generate Maven settings.xml
-        uses: whelk-io/maven-settings-xml-action@v20
+        uses: whelk-io/maven-settings-xml-action@v21
         with:
           output_file: "/usr/share/java/maven-3/conf/settings.xml"
           servers:
@@ -60,14 +60,14 @@ jobs:
     name: Building Darwin Installers
     runs-on: ubuntu-latest
     container:
-      image: epidata/release-builder:latest
+      image: epidata/release-builder:0.2
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Generate Maven settings.xml
-        uses: whelk-io/maven-settings-xml-action@v20
+        uses: whelk-io/maven-settings-xml-action@v21
         with:
           output_file: "/usr/share/java/maven-3/conf/settings.xml"
           servers:
@@ -107,14 +107,14 @@ jobs:
     name: Building Windows Installers
     runs-on: ubuntu-latest
     container:
-      image: epidata/release-builder-win:latest
+      image: epidata/release-builder-win:0.5
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Generate Maven settings.xml
-        uses: whelk-io/maven-settings-xml-action@v20
+        uses: whelk-io/maven-settings-xml-action@v21
         with:
           output_file: "/etc/maven/settings.xml"
           servers:
