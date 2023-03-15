@@ -9,18 +9,18 @@ on:
       - master
 
 jobs:
-  setup:
+  linux:
     name: Building Linux Installers
     runs-on: ubuntu-latest
     container:
-      image: epidata/release-builder:latest
+      image: epidata/release-builder:0.2
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Generate Maven settings.xml
-        uses: whelk-io/maven-settings-xml-action@v20
+        uses: whelk-io/maven-settings-xml-action@v21
         with:
           output_file: "/usr/share/java/maven-3/conf/settings.xml"
           servers:
@@ -51,7 +51,101 @@ jobs:
         run: mvn validate -U
 
       - name: Build All
-        run: ./build_all.sh
+        run: ./build.sh linux
+
+      - name: List output folder
+        run: ls -l target/output/
+
+  mac:
+    name: Building Darwin Installers
+    runs-on: ubuntu-latest
+    container:
+      image: epidata/release-builder:0.2
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Generate Maven settings.xml
+        uses: whelk-io/maven-settings-xml-action@v21
+        with:
+          output_file: "/usr/share/java/maven-3/conf/settings.xml"
+          servers:
+            '[{
+            "id": "github",
+            "username": "${{ secrets.CI_USER }}",
+            "password": "${{ secrets.CI_PASSWORD }}"
+            }]'
+          repositories:
+            '[
+              {
+                "id": "central",
+                "url": "https://repo1.maven.org/maven2"
+              },
+              {
+                "id": "github",
+                "url": "https://maven.pkg.github.com/epidata-dk/parent/",
+                "snapshots": {
+                  "enabled": "true"
+                }                
+              }
+            ]'
+
+      - name: Resolve versions
+        run: mvn versions:resolve-ranges
+
+      - name: Pull dependencies
+        run: mvn validate -U
+
+      - name: Build All
+        run: ./build.sh darwin
+
+      - name: List output folder
+        run: ls -l target/output/
+
+  windows:
+    name: Building Windows Installers
+    runs-on: ubuntu-latest
+    container:
+      image: epidata/release-builder-win:0.5
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Generate Maven settings.xml
+        uses: whelk-io/maven-settings-xml-action@v21
+        with:
+          output_file: "/etc/maven/settings.xml"
+          servers:
+            '[{
+            "id": "github",
+            "username": "${{ secrets.CI_USER }}",
+            "password": "${{ secrets.CI_PASSWORD }}"
+            }]'
+          repositories:
+            '[
+              {
+                "id": "central",
+                "url": "https://repo1.maven.org/maven2"
+              },
+              {
+                "id": "github",
+                "url": "https://maven.pkg.github.com/epidata-dk/parent/",
+                "snapshots": {
+                  "enabled": "true"
+                }                
+              }
+            ]'
+
+      - name: Resolve versions
+        run: mvn versions:resolve-ranges
+
+      - name: Pull dependencies
+        run: mvn validate -U
+
+      - name: Build All
+        run: ./build.sh windows
 
       - name: List output folder
         run: ls -l target/output/

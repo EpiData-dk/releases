@@ -1,15 +1,18 @@
 #!/bin/bash
 
-project_dir=$1
-component=$2
-version=$3
-basedir="$(dirname ${0})"
+do_builds() {
+    local project_dir="$1"
+    local versions="$2"
+    local basedir="$project_dir/linux"
 
-# Prepare output dir
-mkdir -p "${project_dir}/target/output/"
+    source "$project_dir/lib/log.sh"
+    source "$project_dir/lib/build.sh"
 
-echo " - building debian installer (linux)"
-${basedir}/build_deb.sh "${project_dir}" "${component}" "${version}"
+    info "Build debian installer:"
+    do_loop_components "$basedir/build_deb.sh" "$versions"
+    info ""
 
-echo " - building zip structures (linux)"
-${basedir}/build_zip.sh "${project_dir}" "${component}" "${version}"
+    info "Build tar archive:"
+    do_loop_components "$basedir/build_tar.sh" "$versions"
+    info ""
+}
