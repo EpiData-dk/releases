@@ -59,25 +59,25 @@
         <dependency>
             <groupId>dk.epidata.analysis</groupId>
             <artifactId>epidata-analysis</artifactId>
-            <version>[3.0,4.0)</version>
+            <version>[1.0,1.1)</version>
             <type>pom</type>
         </dependency>
         <dependency>
             <groupId>dk.epidata.entryclient</groupId>
             <artifactId>epidata-entryclient</artifactId>
-            <version>[4.0,5.0)</version>
+            <version>[1.0,1.1)</version>
             <type>pom</type>
         </dependency>
         <dependency>
             <groupId>dk.epidata.manager</groupId>
             <artifactId>epidata-manager</artifactId>
-            <version>[4.0,5.0)</version>
+            <version>[1.0,1.1)</version>
             <type>pom</type>
         </dependency>
         <dependency>
             <groupId>dk.epidata.documentation</groupId>
             <artifactId>epidata-documentation</artifactId>
-            <version>[1.0,2.0)</version>
+            <version>[1.0,1.1)</version>
             <type>pom</type>
         </dependency> 
     </dependencies>
