@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 source "lib/log.sh"
 
 if [ "$#" -ne 1 ]; then

@@ -1,4 +1,4 @@
-name: Build Analysis Artifact
+name: Build EpiData Release Artifacts
 
 on:
   pull_request:
@@ -53,8 +53,14 @@ jobs:
       - name: Build All
         run: ./build.sh linux
 
-      - name: List output folder
-        run: ls -l target/output/
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: linux-releases
+          path: |
+            target/output/epidata*.linux.tgz
+            target/output/epidata*.deb
+
 
   mac:
     name: Building Darwin Installers
@@ -100,8 +106,14 @@ jobs:
       - name: Build All
         run: ./build.sh darwin
 
-      - name: List output folder
-        run: ls -l target/output/
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: darwin-releases
+          path: |
+            target/output/epidata*.darwin.zip
+            target/output/epidata*.dmg
+
 
   windows:
     name: Building Windows Installers
@@ -147,17 +159,12 @@ jobs:
       - name: Build All
         run: ./build.sh windows
 
-      - name: List output folder
-        run: ls -l target/output/
-
-      # - name: SFTP Deploy
-      #   uses: wlixcc/SFTP-Deploy-Action@v1.2.4
-      #   with:
-      #       username: ${{ secrets.SFTP_USER }}
-      #       password: ${{ secrets.SFTP_PASSWORD }} 
-      #       server: ${{ secrets.SFTP_SERVER }}
-      #       local_path: 'target/output/*'
-      #       remote_path: '${{ secrets.SFTP_REMOTE_PATH }}'
-      #       sftp_only: true
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-releases
+          path: |
+            target/output/epidata*.win64.zip
+            target/output/epidata*.exe
 
 

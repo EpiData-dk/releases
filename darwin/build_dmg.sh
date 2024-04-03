@@ -17,8 +17,8 @@ mkdir -p "${build_dir}"
 cp -r "${basedir}/EpiData.app" "${build_dir}"
 
 # copy binary
-mkdir -p "${basedir}/EpiData.app/Contents/MacOS"
-cp "${project_dir}/target/${component}/binaries/x86_64-darwin/"* "${basedir}/EpiData.app/Contents/MacOS"
+mkdir -p "${build_dir}/EpiData.app/Contents/MacOS"
+cp "${project_dir}/target/${component}/binaries/x86_64-darwin/"* "${build_dir}/EpiData.app/Contents/MacOS"
 
 # copy documentation
 doc_dir="${build_dir}/EpiData.app/Contents/SharedSupport/docs"

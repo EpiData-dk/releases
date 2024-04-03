@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 components=("analysis" "entryclient" "manager")
 
 do_loop_components() {

@@ -1,11 +1,17 @@
 #!/bin/bash
 
+set -e
+
 EPIDATA_SUITE_VERSION="4.6.0"
 
 project_dir="$1"
 versions="$2"
 
-ssl_version="1.0.2u"
+ssl_version="1.1.1w"
+ssl_url="https://wiki.overbyte.eu/arch/openssl-${ssl_version}-win64.zip"
+
+# ssl_version="1.0.2u"
+# ssl_url="https://indy.fulgan.com/SSL/openssl-${ssl_version}-x64_86-win64.zip"
 
 source "$project_dir/lib/log.sh"
 source "$project_dir/lib/build.sh"
@@ -30,7 +36,7 @@ done
 
 # Get ssl library
 mkdir -p "${tmpdir}"
-wget -q "https://indy.fulgan.com/SSL/openssl-${ssl_version}-x64_86-win64.zip" -O "${tmpdir}/openssl.zip"
+wget -q "${ssl_url}" -O "${tmpdir}/openssl.zip"
 unzip -q "${tmpdir}/openssl.zip" "*.dll" -d "${innosetup_dir}"
 
 # copy documentation
@@ -47,7 +53,7 @@ cp "${project_dir}/target/samples/"* "${innosetup_dir}/examples/"
 
 pushd "${innosetup_dir}"
 sed -i "s/{{ VERSION }}/$EPIDATA_SUITE_VERSION/g" epidatacombined.iss
-wine-x11-run iscc epidatacombined.iss
+iscc epidatacombined.iss
 popd
 
 mv "${innosetup_dir}/Output/"*.exe "${output_dir}/"

@@ -52,8 +52,7 @@ Name: "DesktopIcon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Source: "epidatamanager.exe";     DestDir: "{app}"; DestName: "epidatamanager.exe";     Check: IsWin64;     Components: Manager;     Flags: ignoreversion
 Source: "epidataentryclient.exe"; DestDir: "{app}"; DestName: "epidataentryclient.exe"; Check: IsWin64;     Components: EntryClient; Flags: ignoreversion
 Source: "epidataanalysis.exe";    DestDir: "{app}"; DestName: "epidataanalysis.exe";    Check: IsWin64;     Components: Analysis;    Flags: ignoreversion
-Source: "libeay32.dll";           DestDir: "{app}";                                     Check: IsWin64;     Components: Manager EntryClient Analysis;
-Source: "ssleay32.dll";           DestDir: "{app}";                                     Check: IsWin64;     Components: Manager EntryClient Analysis;
+Source: "*.dll";                  DestDir: "{app}";                                     Check: IsWin64;     Components: Manager EntryClient Analysis;
 
 ; ; Classic - install both 32 and 64 bit
 ; Source: "system\EpiDataStat.exe"; DestDir: "{app}";                   Components: Classic; Flags: ignoreversion
