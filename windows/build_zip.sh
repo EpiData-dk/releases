@@ -1,10 +1,13 @@
 #!/bin/bash
 
+set -e
+
 project_dir="$1"
 component="$2"
 version="$3"
 
-ssl_version="1.0.2u"
+ssl_version="1.1.1w"
+ssl_url="https://wiki.overbyte.eu/arch/openssl-${ssl_version}-win64.zip"
 
 component_dir="${project_dir}/${component}"
 build_dir="$(mktemp -d)"
@@ -28,7 +31,7 @@ cp "${project_dir}/target/samples/"* "${build_dir}/samples/"
 
 # Get ssl library
 mkdir -p "${tmpdir}"
-wget -q "https://indy.fulgan.com/SSL/openssl-${ssl_version}-x64_86-win64.zip" -O "${tmpdir}/openssl.zip"
+wget -q "${ssl_url}" -O "${tmpdir}/openssl.zip"
 unzip -q "${tmpdir}/openssl.zip" "*.dll" -d "${build_dir}"
 
 pushd "${build_dir}/" > /dev/null 2>&1

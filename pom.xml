@@ -12,7 +12,7 @@
 
     <groupId>dk.epidata.release</groupId>
     <artifactId>releases</artifactId>
-    <version>1.1.0</version>
+    <version>2.0</version>
     <packaging>pom</packaging>
 
     <build>
@@ -59,19 +59,19 @@
         <dependency>
             <groupId>dk.epidata.analysis</groupId>
             <artifactId>epidata-analysis</artifactId>
-            <version>[1.1,1.2)</version>
+            <version>[2.0,2.1)</version>
             <type>pom</type>
         </dependency>
         <dependency>
             <groupId>dk.epidata.entryclient</groupId>
             <artifactId>epidata-entryclient</artifactId>
-            <version>[1.1,1.2)</version>
+            <version>[2.0,2.1)</version>
             <type>pom</type>
         </dependency>
         <dependency>
             <groupId>dk.epidata.manager</groupId>
             <artifactId>epidata-manager</artifactId>
-            <version>[1.1,1.2)</version>
+            <version>[2.0,2.1)</version>
             <type>pom</type>
         </dependency>
         <dependency>
