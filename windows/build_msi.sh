@@ -2,7 +2,7 @@
 
 set -e
 
-EPIDATA_SUITE_VERSION="4.6.0"
+EPIDATA_SUITE_VERSION="4.7.0"
 
 project_dir="$1"
 versions="$2"
