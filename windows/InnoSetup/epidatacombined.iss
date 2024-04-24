@@ -54,13 +54,15 @@ Source: "epidataentryclient.exe"; DestDir: "{app}"; DestName: "epidataentryclien
 Source: "epidataanalysis.exe";    DestDir: "{app}"; DestName: "epidataanalysis.exe";    Check: IsWin64;     Components: Analysis;    Flags: ignoreversion
 Source: "*.dll";                  DestDir: "{app}";                                     Check: IsWin64;     Components: Manager EntryClient Analysis;
 
-; ; Classic - install both 32 and 64 bit
-; Source: "system\EpiDataStat.exe"; DestDir: "{app}";                   Components: Classic; Flags: ignoreversion
-; Source: "system\images\*";        DestDir: "{app}\languages\images\"; Components: Classic; Flags: ignoreversion
-; Source: "css\*.*";                DestDir: "{app}";                   Components: Classic; Flags: ignoreversion
-; Source: "lang\en\system\*";       DestDir: "{app}";                   Components: Classic; Flags: ignoreversion
-; Source: "lang\en\start\*";        DestDir: "{app}\languages\en\";     Components: Classic; Flags: ignoreversion
-; Source: "lang\en\help\*";         DestDir: "{app}\languages\en\help"; Components: Classic; Flags: ignoreversion
+; Classic - install both 32 and 64 bit
+Source: "classic\EpiDataStat.exe";       DestDir: "{app}";                     Components: Classic; Flags: ignoreversion
+Source: "classic\languages\images\*";    DestDir: "{app}\languages\images\";   Components: Classic; Flags: ignoreversion
+Source: "classic\*.css";                 DestDir: "{app}";                     Components: Classic; Flags: ignoreversion
+Source: "classic\languages\en\*";        DestDir: "{app}";                     Components: Classic; Flags: ignoreversion
+Source: "classic\languages\en\help\*";   DestDir: "{app}\languages\en\help";   Components: Classic; Flags: ignoreversion
+Source: "classic\languages\fr\*";        DestDir: "{app}\languages\fr";        Components: Classic; Flags: ignoreversion
+Source: "classic\languages\fr\help\*";   DestDir: "{app}\languages\fr\help";   Components: Classic; Flags: ignoreversion
+Source: "classic\languages\cn\*";        DestDir: "{app}\languages\cn";        Components: Classic; Flags: ignoreversion
 
 
 ; Documentation

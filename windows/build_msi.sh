@@ -34,6 +34,9 @@ do
     cp "${project_dir}/target/$component/binaries/x86_64-win64/"* "$innosetup_dir"
 done
 
+# copy EpiData classic, only used in this windows setup binary
+cp -R "${project_dir}/target/classic" "$innosetup_dir"
+
 # Get ssl library
 mkdir -p "${tmpdir}"
 wget -q "${ssl_url}" -O "${tmpdir}/openssl.zip"
